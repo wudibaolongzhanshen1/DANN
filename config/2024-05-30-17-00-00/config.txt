@@ -1,0 +1,11 @@
+pre_model_path: None
+checkpoints_dir: D:\developper\PyCharmProject\DANN\checkpoints\2024-05-30-17-00-00\2024-05-30-17-00-00
+logs_dir: D:\developper\PyCharmProject\DANN\logs\2024-05-30-17-00-00\2024-05-30-17-00-00
+config_dir: D:\developper\PyCharmProject\DANN\config\2024-05-30-17-00-00\2024-05-30-17-00-00
+image_input_shape: (28, 28, 3)
+image_size: 28
+init_learning_rate: 0.01
+momentum_rate: 0.9
+batch_size: 256
+epoch: 500
+pixel_mean: [45.652287, 45.652287, 45.652287]
