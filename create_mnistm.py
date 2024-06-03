@@ -1,10 +1,15 @@
 import os
 import random
+import time
 
 import cv2
 import numpy as np
+import torch
 from matplotlib import pyplot as plt
 import pickle as pkl
+
+import config
+import mnist_dataset
 from utils import utils
 
 # 返回融合后[mnist_width,mnist_height]的图片
@@ -39,17 +44,21 @@ with open('dataset\\mnistm_data.pkl', 'rb') as f:
 dataset_dir = 'dataset'
 bdbs_imgs_dir_path = 'dataset/BSDS/BDBS500/images/train/data'
 #[60000,28,28]
-mnist_train_imgs = utils.parse_mnist('dataset/MNIST/raw/train-images-idx3-ubyte.gz')
-mnist_train_labels = utils.parse_mnist('dataset/MNIST/raw/train-labels-idx1-ubyte.gz')
-mnist_test_imgs = utils.parse_mnist('dataset/MNIST/raw/t10k-images-idx3-ubyte.gz')
-mnist_test_labels = utils.parse_mnist('dataset/MNIST/raw/t10k-labels-idx1-ubyte.gz')
+x_train_path = 'dataset/MNIST/raw/train-images-idx3-ubyte.gz'
+y_train_path = 'dataset/MNIST/raw/train-labels-idx1-ubyte.gz'
+x_test_path = 'dataset/MNIST/raw/t10k-images-idx3-ubyte.gz'
+y_test_path = 'dataset/MNIST/raw/t10k-labels-idx1-ubyte.gz'
+(mnist_train_imgs, mnist_train_labels), (mnist_test_imgs, mnist_test_labels) = mnist_dataset.load_mnist(x_train_path, y_train_path, x_test_path, y_test_path)
 bdbs_imgs = []
 bdbs_imgs_names_list = os.listdir(bdbs_imgs_dir_path)
 for bdbs_img_name in bdbs_imgs_names_list:
     bdbs_img_path = os.path.join(bdbs_imgs_dir_path,bdbs_img_name)
     bdbs_img = cv2.imread(bdbs_img_path,0)
     bdbs_imgs.append(bdbs_img)
-
+mnist_train_imgs = torch.from_numpy(mnist_train_imgs)
+mnist_train_imgs = mnist_train_imgs.reshape(-1,28,28).numpy()
+mnist_test_imgs = torch.from_numpy(mnist_test_imgs)
+mnist_test_imgs = mnist_test_imgs.reshape(-1,28,28).numpy()
 mnistm_train_imgs,mnistm_train_labels = create_mnistm(mnist_train_imgs,mnist_train_labels,bdbs_imgs)
 mnistm_train_imgs = np.expand_dims(mnistm_train_imgs,axis=-1) #ndarray[60000,28,28,1]
 mnistm_train_imgs = np.concatenate([mnistm_train_imgs,mnistm_train_imgs,mnistm_train_imgs],axis=3) #ndarray[60000,28,28,3]
@@ -61,7 +70,14 @@ mnist_train_imgs = np.concatenate([mnist_train_imgs,mnist_train_imgs,mnist_train
 mnist_test_imgs = np.expand_dims(mnist_test_imgs,axis=-1) #ndarray[60000,28,28,1]
 mnist_test_imgs = np.concatenate([mnist_test_imgs,mnist_test_imgs,mnist_test_imgs],axis=3) #ndarray[60000,28,28,3]
 pixel_mean = np.vstack([mnist_train_imgs,mnistm_train_imgs,mnist_test_imgs,mnistm_test_imgs]).mean((0,1,2))
+pixel_std = np.vstack([mnist_train_imgs,mnistm_train_imgs,mnist_test_imgs,mnistm_test_imgs]).std((0,1,2))
 print(f'pixel_mean:{pixel_mean}')
+print(f'pixel_std:{pixel_std}')
+con = config.config()
+con.set(pixel_mean=pixel_mean,pixel_std=pixel_std)
+t = time.localtime()
+time_str = time.strftime('%Y-%m-%d-%H-%M-%S',t)
+con.save_config(time_str)
 with open(os.path.join(dataset_dir, 'mnistm_data.pkl'), 'wb') as f:
     pkl.dump({'train_imgs': mnistm_train_imgs,
               'train_labels': mnistm_train_labels,

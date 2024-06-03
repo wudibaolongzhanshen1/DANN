@@ -5,7 +5,7 @@ class config(object):
     __default_dict__ = {
         "pre_model_path":None,
         "checkpoints_dir":os.path.abspath("./checkpoints"),
-        "logs_dir":os.path.abspath("./logs"),
+        "logs_dir":"logs",
         "config_dir":os.path.abspath("./config"),
         "image_input_shape":(28,28,3),
         "image_size":28,
@@ -14,6 +14,7 @@ class config(object):
         "batch_size":256,
         "epoch":500,
         "pixel_mean":[45.652287,45.652287,45.652287],
+        "pixel_std":[405.652287,45.652287,45.652287]
     }
 
     def __init__(self,**kwargs):
@@ -28,8 +29,6 @@ class config(object):
 
         if not os.path.exists(self.checkpoints_dir):
             os.makedirs(self.checkpoints_dir)
-        if not os.path.exists(self.logs_dir):
-            os.makedirs(self.logs_dir)
         if not os.path.exists(self.config_dir):
             os.makedirs(self.config_dir)
 
@@ -51,15 +50,12 @@ class config(object):
         """
         # 更新相关目录
         self.checkpoints_dir = os.path.join(self.checkpoints_dir,time)
-        self.logs_dir = os.path.join(self.logs_dir,time)
         self.config_dir = os.path.join(self.config_dir,time)
 
         if not os.path.exists(self.config_dir):
             os.makedirs(self.config_dir)
         if not os.path.exists(self.checkpoints_dir):
             os.makedirs(self.checkpoints_dir)
-        if not os.path.exists(self.logs_dir):
-            os.makedirs(self.logs_dir)
 
         config_txt_path = os.path.join(self.config_dir,"config.txt")
         with open(config_txt_path,'a') as f:
