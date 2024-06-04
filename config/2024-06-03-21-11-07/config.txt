@@ -1,6 +1,6 @@
 pre_model_path: None
 checkpoints_dir: D:\developper\PyCharmProject\DANN\checkpoints\2024-06-03-21-11-07\2024-06-03-21-11-07
-logs_dir: logs\2024-06-03-21-11-07
+logs_dir: logs\
 config_dir: D:\developper\PyCharmProject\DANN\config\2024-06-03-21-11-07\2024-06-03-21-11-07
 image_input_shape: (28, 28, 3)
 image_size: 28

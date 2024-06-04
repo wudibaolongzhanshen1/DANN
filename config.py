@@ -60,7 +60,7 @@ class config(object):
         config_txt_path = os.path.join(self.config_dir,"config.txt")
         with open(config_txt_path,'a') as f:
             for key,value in self.__dict__.items():
-                if key in ["checkpoints_dir","logs_dir","config_dir"]:
+                if key in ["checkpoints_dir","config_dir"]:
                     value = os.path.join(value,time)
                 s = str(key)+": "+str(value)+"\n"
                 f.write(s)

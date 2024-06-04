@@ -3,7 +3,7 @@ import torch
 from GRL import GRL
 
 """
-输入图像尺寸28*28*3
+输入图像尺寸3*28*28
 """
 class DANN(nn.Module):
     def __init__(self):
@@ -26,10 +26,10 @@ class DANN(nn.Module):
         self.domain_predictor = nn.Sequential(
             nn.Linear(4*4*48, 100),
             nn.ReLU(),
-            nn.Linear(100, 1)
+            nn.Linear(100, 2)
         )
 
-    def forward(self, x, lambda_=0):
+    def forward(self, x, lambda_=0) -> (torch.tensor, torch.tensor):
         features = self.feature_extractor(x)
         features = torch.flatten(features, 1)
         class_pred = self.label_predictor(features)
