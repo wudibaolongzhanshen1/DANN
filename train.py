@@ -119,46 +119,71 @@ for i in range(epoch):
     net.eval()
     mnistm_cls_accuracy = 0.
     mnistm_domain_accuracy = 0.
+    target_cls_loss = 0.
+    target_domain_loss = 0.
+    source_cls_loss = 0.
+    source_domain_loss = 0.
     # 重置迭代器
-    datatarget_iter = iter(mnistm_train_loader)
-    for step in range(len(mnistm_train_loader)):
+    datatarget_iter = iter(mnistm_test_loader)
+    for step in range(len(mnistm_test_loader)):
         mnistm_imgs, mnistm_labels = next(datatarget_iter)
         mnistm_imgs = mnistm_imgs.to(device)
         mnistm_labels = mnistm_labels.to(device)
         class_pred, domain_pred = net(mnistm_imgs)
+
+
+        target_cls_loss += ClsLoss(class_pred, mnistm_labels).item()
+        target_domain_loss += TargetDloss(domain_pred,
+                                         torch.ones(domain_pred.shape[0]).long().to(device)).item()
         sm = nn.Softmax()
         class_pred = sm(class_pred)
         class_pred = torch.argmax(class_pred, dim=1)
         domain_pred = sm(domain_pred)
         domain_pred = torch.argmax(domain_pred, dim=1)
-        mnistm_cls_accuracy += torch.sum(class_pred == mnistm_labels)
-        mnistm_domain_accuracy += torch.sum(domain_pred == torch.ones_like(domain_pred))
-    mnistm_cls_accuracy = mnistm_cls_accuracy / len(mnistm_train_loader)
-    mnistm_domain_accuracy = mnistm_domain_accuracy / len(mnistm_train_loader)
+
+        mnistm_cls_accuracy += torch.sum(class_pred == mnistm_labels).item()
+        mnistm_domain_accuracy += torch.sum(domain_pred == torch.ones_like(domain_pred)).item()
+
+    mnistm_cls_accuracy = mnistm_cls_accuracy / len(mnistm_test_dataset)
+    mnistm_domain_accuracy = mnistm_domain_accuracy / len(mnistm_test_dataset)
 
     best_mnist_cls_accuracy = 0.
     mnist_cls_accuracy = 0.
     mnist_domain_accuracy = 0.
-    datasource_iter = iter(mnist_train_loader)
+    datasource_iter = iter(mnist_test_loader)
     for step in range(len(mnist_test_loader)):
         mnist_imgs, mnist_labels = next(datasource_iter)
         mnist_imgs = mnist_imgs.to(device)
         mnist_labels = mnist_labels.to(device)
         class_pred, domain_pred = net(mnist_imgs)
+
+        source_cls_loss += ClsLoss(class_pred, mnist_labels).item()
+        source_domain_loss += TargetDloss(domain_pred,
+                                         torch.zeros(domain_pred.shape[0]).long().to(device)).item()
+
         sm = nn.Softmax()
-        class_pred = torch.argmax(sm(class_pred), dim=1)
-        domain_pred = torch.argmax(sm(domain_pred), dim=1)
-        mnistm_cls_accuracy += torch.sum(class_pred == mnist_labels)
-        mnistm_domain_accuracy += torch.sum(domain_pred == torch.ones_like(domain_pred))
-    mnist_cls_accuracy = mnist_cls_accuracy / len(mnist_train_loader)
-    mnist_domain_accuracy = mnist_domain_accuracy / len(mnist_train_loader)
+        class_pred = sm(class_pred)
+        class_pred = torch.argmax(class_pred, dim=1)
+        domain_pred = sm(domain_pred)
+        domain_pred = torch.argmax(domain_pred, dim=1)
+
+        mnist_cls_accuracy += torch.sum(class_pred == mnist_labels).item()
+        mnist_domain_accuracy += torch.sum(domain_pred == torch.zeros_like(domain_pred)).item()
+    mnist_cls_accuracy = mnist_cls_accuracy / len(mnist_test_dataset)
+    mnist_domain_accuracy = mnist_domain_accuracy / len(mnist_test_dataset)
     if mnist_cls_accuracy > best_mnist_cls_accuracy:
         best_mnist_cls_accuracy = mnist_cls_accuracy
-        torch.save(net.state_dict(), 'model/best_model.pth')
+        torch.save(net.state_dict(), 'models/best_model.pth')
     print(
         '\r [epoch: %d / all %d], mnistm_cls_accuracy: %f, mnistm_domain_accuracy: %f, mnist_cls_accuracy: %f, mnist_domain_accuracy: %f' \
         % (i, epoch, mnistm_cls_accuracy, mnistm_domain_accuracy, mnist_cls_accuracy, mnist_domain_accuracy))
+    print(
+        '\r [epoch: %d / all %d], mnistm_cls_loss: %f, mnistm_domain_loss: %f, mnist_cls_loss: %f, mnist_domain_loss: %f' \
+        % (i, epoch, target_cls_loss, target_domain_loss, source_cls_loss, source_domain_loss))
     # use logging
     logging.info(
         '\r [epoch: %d / all %d], mnistm_cls_accuracy: %f, mnistm_domain_accuracy: %f, mnist_cls_accuracy: %f, mnist_domain_accuracy: %f' \
         % (i, epoch, mnistm_cls_accuracy, mnistm_domain_accuracy, mnist_cls_accuracy, mnist_domain_accuracy))
+    logging.info(
+        '\r [epoch: %d / all %d], mnistm_cls_loss: %f, mnistm_domain_loss: %f, mnist_cls_loss: %f, mnist_domain_loss: %f' \
+        % (i, epoch, target_cls_loss, target_domain_loss, source_cls_loss, source_domain_loss))

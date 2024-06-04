@@ -1,5 +1,28 @@
-2024-06-04 10:17:09,189 - train.py[line:163] - INFO:  [epoch: 0 / all 500], mnistm_cls_accuracy: 10009.749023, mnistm_domain_accuracy: 549.565918, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
-2024-06-04 10:17:14,974 - train.py[line:163] - INFO:  [epoch: 1 / all 500], mnistm_cls_accuracy: 10107.583008, mnistm_domain_accuracy: 289.889343, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
-2024-06-04 10:17:21,017 - train.py[line:163] - INFO:  [epoch: 2 / all 500], mnistm_cls_accuracy: 10137.779297, mnistm_domain_accuracy: 258.753174, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
-2024-06-04 10:17:27,150 - train.py[line:163] - INFO:  [epoch: 3 / all 500], mnistm_cls_accuracy: 10190.779297, mnistm_domain_accuracy: 264.080841, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
-2024-06-04 10:17:33,248 - train.py[line:163] - INFO:  [epoch: 4 / all 500], mnistm_cls_accuracy: 10153.671875, mnistm_domain_accuracy: 275.021271, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
+2024-06-04 15:11:48,274 - train.py[line:184] - INFO:  [epoch: 0 / all 500], mnistm_cls_accuracy: 0.125800, mnistm_domain_accuracy: 0.991400, mnist_cls_accuracy: 0.972200, mnist_domain_accuracy: 1.000000
+2024-06-04 15:11:48,274 - train.py[line:187] - INFO:  [epoch: 0 / all 500], mnistm_cls_loss: 190.681111, mnistm_domain_loss: 1.123416, mnist_cls_loss: 3.722191, mnist_domain_loss: 0.084179
+2024-06-04 15:11:56,264 - train.py[line:184] - INFO:  [epoch: 1 / all 500], mnistm_cls_accuracy: 0.120500, mnistm_domain_accuracy: 0.995700, mnist_cls_accuracy: 0.978700, mnist_domain_accuracy: 0.999900
+2024-06-04 15:11:56,264 - train.py[line:187] - INFO:  [epoch: 1 / all 500], mnistm_cls_loss: 194.533986, mnistm_domain_loss: 0.799472, mnist_cls_loss: 2.389289, mnist_domain_loss: 0.105476
+2024-06-04 15:12:04,567 - train.py[line:184] - INFO:  [epoch: 2 / all 500], mnistm_cls_accuracy: 0.129400, mnistm_domain_accuracy: 0.995100, mnist_cls_accuracy: 0.987500, mnist_domain_accuracy: 0.999900
+2024-06-04 15:12:04,567 - train.py[line:187] - INFO:  [epoch: 2 / all 500], mnistm_cls_loss: 131.613673, mnistm_domain_loss: 0.800884, mnist_cls_loss: 1.593319, mnist_domain_loss: 0.160606
+2024-06-04 15:12:12,878 - train.py[line:184] - INFO:  [epoch: 3 / all 500], mnistm_cls_accuracy: 0.182400, mnistm_domain_accuracy: 0.992900, mnist_cls_accuracy: 0.986300, mnist_domain_accuracy: 0.999200
+2024-06-04 15:12:12,878 - train.py[line:187] - INFO:  [epoch: 3 / all 500], mnistm_cls_loss: 93.399313, mnistm_domain_loss: 0.911223, mnist_cls_loss: 1.853502, mnist_domain_loss: 0.576518
+2024-06-04 15:12:21,083 - train.py[line:184] - INFO:  [epoch: 4 / all 500], mnistm_cls_accuracy: 0.239900, mnistm_domain_accuracy: 0.985400, mnist_cls_accuracy: 0.989500, mnist_domain_accuracy: 0.998800
+2024-06-04 15:12:21,083 - train.py[line:187] - INFO:  [epoch: 4 / all 500], mnistm_cls_loss: 88.043306, mnistm_domain_loss: 2.286711, mnist_cls_loss: 1.294168, mnist_domain_loss: 0.501462
+2024-06-04 15:12:29,282 - train.py[line:184] - INFO:  [epoch: 5 / all 500], mnistm_cls_accuracy: 0.265600, mnistm_domain_accuracy: 0.985900, mnist_cls_accuracy: 0.990500, mnist_domain_accuracy: 0.989700
+2024-06-04 15:12:29,282 - train.py[line:187] - INFO:  [epoch: 5 / all 500], mnistm_cls_loss: 88.200078, mnistm_domain_loss: 2.525820, mnist_cls_loss: 1.145602, mnist_domain_loss: 1.327505
+2024-06-04 15:12:37,527 - train.py[line:184] - INFO:  [epoch: 6 / all 500], mnistm_cls_accuracy: 0.251900, mnistm_domain_accuracy: 0.991000, mnist_cls_accuracy: 0.987600, mnist_domain_accuracy: 0.978300
+2024-06-04 15:12:37,527 - train.py[line:187] - INFO:  [epoch: 6 / all 500], mnistm_cls_loss: 87.424401, mnistm_domain_loss: 1.720566, mnist_cls_loss: 1.442674, mnist_domain_loss: 2.454459
+2024-06-04 15:12:45,744 - train.py[line:184] - INFO:  [epoch: 7 / all 500], mnistm_cls_accuracy: 0.206000, mnistm_domain_accuracy: 0.993000, mnist_cls_accuracy: 0.989100, mnist_domain_accuracy: 0.994900
+2024-06-04 15:12:45,744 - train.py[line:187] - INFO:  [epoch: 7 / all 500], mnistm_cls_loss: 94.724685, mnistm_domain_loss: 1.420371, mnist_cls_loss: 1.314943, mnist_domain_loss: 0.546804
+2024-06-04 15:12:58,990 - train.py[line:184] - INFO:  [epoch: 8 / all 500], mnistm_cls_accuracy: 0.237000, mnistm_domain_accuracy: 0.986300, mnist_cls_accuracy: 0.992000, mnist_domain_accuracy: 0.999400
+2024-06-04 15:12:58,990 - train.py[line:187] - INFO:  [epoch: 8 / all 500], mnistm_cls_loss: 93.627109, mnistm_domain_loss: 2.477050, mnist_cls_loss: 1.368210, mnist_domain_loss: 0.093296
+2024-06-04 15:13:26,273 - train.py[line:184] - INFO:  [epoch: 9 / all 500], mnistm_cls_accuracy: 0.267400, mnistm_domain_accuracy: 0.991800, mnist_cls_accuracy: 0.990600, mnist_domain_accuracy: 0.994100
+2024-06-04 15:13:26,273 - train.py[line:187] - INFO:  [epoch: 9 / all 500], mnistm_cls_loss: 89.852178, mnistm_domain_loss: 1.465203, mnist_cls_loss: 1.108100, mnist_domain_loss: 0.735039
+2024-06-04 15:13:34,661 - train.py[line:184] - INFO:  [epoch: 10 / all 500], mnistm_cls_accuracy: 0.302400, mnistm_domain_accuracy: 0.987700, mnist_cls_accuracy: 0.990900, mnist_domain_accuracy: 0.997700
+2024-06-04 15:13:34,661 - train.py[line:187] - INFO:  [epoch: 10 / all 500], mnistm_cls_loss: 93.404709, mnistm_domain_loss: 2.288616, mnist_cls_loss: 1.106319, mnist_domain_loss: 0.284778
+2024-06-04 15:13:43,240 - train.py[line:184] - INFO:  [epoch: 11 / all 500], mnistm_cls_accuracy: 0.309300, mnistm_domain_accuracy: 0.989200, mnist_cls_accuracy: 0.990000, mnist_domain_accuracy: 0.996400
+2024-06-04 15:13:43,240 - train.py[line:187] - INFO:  [epoch: 11 / all 500], mnistm_cls_loss: 103.089297, mnistm_domain_loss: 1.974244, mnist_cls_loss: 1.169965, mnist_domain_loss: 0.458691
+2024-06-04 15:13:51,719 - train.py[line:184] - INFO:  [epoch: 12 / all 500], mnistm_cls_accuracy: 0.210700, mnistm_domain_accuracy: 0.989200, mnist_cls_accuracy: 0.988000, mnist_domain_accuracy: 0.996300
+2024-06-04 15:13:51,719 - train.py[line:187] - INFO:  [epoch: 12 / all 500], mnistm_cls_loss: 138.089698, mnistm_domain_loss: 2.246506, mnist_cls_loss: 1.657549, mnist_domain_loss: 0.370411
+2024-06-04 15:14:00,669 - train.py[line:184] - INFO:  [epoch: 13 / all 500], mnistm_cls_accuracy: 0.223700, mnistm_domain_accuracy: 0.991300, mnist_cls_accuracy: 0.991200, mnist_domain_accuracy: 0.993800
+2024-06-04 15:14:00,669 - train.py[line:187] - INFO:  [epoch: 13 / all 500], mnistm_cls_loss: 100.007923, mnistm_domain_loss: 1.678585, mnist_cls_loss: 1.513336, mnist_domain_loss: 0.778834

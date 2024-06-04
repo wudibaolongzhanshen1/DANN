@@ -9,7 +9,7 @@ class config(object):
         "config_dir":os.path.abspath("./config"),
         "image_input_shape":(28,28,3),
         "image_size":28,
-        "init_learning_rate": 1e-2,
+        "init_learning_rate": 1e-3,
         "momentum_rate":0.9,
         "batch_size":256,
         "epoch":500,
