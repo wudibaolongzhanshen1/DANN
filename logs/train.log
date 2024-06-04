@@ -1,0 +1,5 @@
+2024-06-04 10:17:09,189 - train.py[line:163] - INFO:  [epoch: 0 / all 500], mnistm_cls_accuracy: 10009.749023, mnistm_domain_accuracy: 549.565918, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
+2024-06-04 10:17:14,974 - train.py[line:163] - INFO:  [epoch: 1 / all 500], mnistm_cls_accuracy: 10107.583008, mnistm_domain_accuracy: 289.889343, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
+2024-06-04 10:17:21,017 - train.py[line:163] - INFO:  [epoch: 2 / all 500], mnistm_cls_accuracy: 10137.779297, mnistm_domain_accuracy: 258.753174, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
+2024-06-04 10:17:27,150 - train.py[line:163] - INFO:  [epoch: 3 / all 500], mnistm_cls_accuracy: 10190.779297, mnistm_domain_accuracy: 264.080841, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
+2024-06-04 10:17:33,248 - train.py[line:163] - INFO:  [epoch: 4 / all 500], mnistm_cls_accuracy: 10153.671875, mnistm_domain_accuracy: 275.021271, mnist_cls_accuracy: 0.000000, mnist_domain_accuracy: 0.000000
